@@ -7,19 +7,14 @@ function CreateArea(props) {
     });
 
     function handleChange(event){
+        //destructure event target to set name and value to constant
         const {value, name}=event.target;
 
-        setNote((prevValues)=>{
-            if(name==="title"){
-                return {
-                    title: value,
-                    content: prevValues.content
-                }
-            }else if(name==="content"){
-                return {
-                    title: prevValues.title,
-                    content: value
-                }
+        //set notes values while keeping title/content
+        setNote((prevNote)=>{
+            return {
+                ...prevNote,
+                [name]:value
             }
         });
     }
@@ -41,8 +36,9 @@ function CreateArea(props) {
             setNote({
                 title: "",
                 content: ""
-            });
-        }}>Add</button>
+            });}}>
+                Add
+            </button>
       </form>
     </div>
   );
