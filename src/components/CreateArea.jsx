@@ -32,7 +32,7 @@ function CreateArea(props) {
         />
         <button onClick={(event)=>{
             event.preventDefault();
-            props.handleAdd(note);
+            props.onAdd(note);
             setNote({
                 title: "",
                 content: ""

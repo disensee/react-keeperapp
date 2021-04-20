@@ -9,15 +9,13 @@ function App(){
     
     function addNote(note){
         setNotesArr((prevItems)=>{
-            const returnArr = [...prevItems, note];
-            console.log(returnArr);
-            return returnArr;
+            return [...prevItems, note];
         })
     }
 
     function deleteNote(id){
         setNotesArr((prevItems)=>{
-            return prevItems.filter((item, index)=>{
+            return prevItems.filter((note, index)=>{
                 return index !== id;
             });
         });
@@ -26,7 +24,7 @@ function App(){
     return (
         <div>
             <Header />
-            <CreateArea handleAdd={addNote}/>
+            <CreateArea onAdd={addNote}/>
             {notesArr.map((note, index)=>{
                 return(
                     <Note
@@ -34,7 +32,7 @@ function App(){
                         id={index}
                         title={note.title}
                         content={note.content}
-                        deleteNote={deleteNote} 
+                        onDelete={deleteNote} 
                     />
                 );
             })}
