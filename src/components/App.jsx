@@ -3,7 +3,6 @@ import Header from './Header';
 import Footer from './Footer';
 import CreateArea from './CreateArea';
 import Note from './Note';
-import notes from '../notes';
 
 function App(){ 
     const [notesArr, setNotesArr] = useState([]);
@@ -16,6 +15,15 @@ function App(){
         })
     }
 
+    function deleteNote(id){
+        console.log("delete note " + id);
+        setNotesArr((prevItems)=>{
+            return prevItems.filter((item, index)=>{
+                return index !== id;
+            });
+        });
+    }
+
     return (
         <div>
             <Header />
@@ -23,9 +31,11 @@ function App(){
             {notesArr.map((note, index)=>{
                 return(
                     <Note
-                        key={index+1}
+                        key={index}
+                        id={index}
                         title={note.title}
-                        content={note.content} 
+                        content={note.content}
+                        deleteNote={deleteNote} 
                     />
                 );
             })}

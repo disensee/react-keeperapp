@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
-import notes from '../notes';
+import React from 'react';
 
 function Note(props){
     return(
         <div className = 'note'>
             <h1>{props.title}</h1>
             <p>{props.content}</p>
-            <button>Delete</button>
+            <button onClick={()=>{
+                props.deleteNote(props.id);
+            }}>Delete</button>
         </div>
     );
 }
