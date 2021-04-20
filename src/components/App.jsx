@@ -16,7 +16,6 @@ function App(){
     }
 
     function deleteNote(id){
-        console.log("delete note " + id);
         setNotesArr((prevItems)=>{
             return prevItems.filter((item, index)=>{
                 return index !== id;
